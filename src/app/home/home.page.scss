@@ -1,1 +1,47 @@
+@import '../../theme/theme.scss';
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  app-player {
+    width: 30rem;
+  }
 
+  #buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    justify-content: space-evenly;
+    button {
+      transform: scale(2);
+      background-color: mat-color($mat-accent, main) !important;
+      border-radius: 0.1rem !important;
+      @include mat-elevation(2);
+      color: white;
+    }
+  }
+}
+#save {
+  position: absolute !important;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  margin: 2rem;
+  @include mat-elevation(2);
+  background-color: mat-color($mat-primary, main);
+}
+
+@media only screen and (max-width: 730px) {
+  #wrapper {
+    align-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    app-player {
+      width: 99%;
+    }
+    #buttons {
+      width: 90%;
+      flex-direction: row;
+      margin: 3rem auto;
+    }
+  }
+}

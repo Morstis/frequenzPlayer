@@ -1,0 +1,31 @@
+@import '../theme/theme.scss';
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+mat-toolbar {
+  position: relative;
+  z-index: 1;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+mat-sidenav {
+  width: 65%;
+  min-width: 250px;
+  max-width: 350px;
+}
+#content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 24px;
+}
+h1 {
+  color: white;
+}
+.router-link-active {
+  font-weight: bold;
+  color: mat-color($mat-primary, main) !important;
+  background-color: rgba(mat-color($mat-primary, main), 0.12) !important;
+}

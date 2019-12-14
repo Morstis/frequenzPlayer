@@ -1,0 +1,95 @@
+<div class="player">
+  <form novalidate #form="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="minimale Frequenz"
+        required
+        name="freq1"
+        [(ngModel)]="playerData.freq[0]"
+        type="number"
+        autocomplete="off"
+      />
+      <mat-error>
+        Die minimale Frequenz wird benötigt!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="maximale Frequenz"
+        required
+        name="freq2"
+        [(ngModel)]="playerData.freq[1]"
+        type="number"
+        autocomplete="off"
+      />
+      <mat-error>
+        Die maximale Frequenz wird benötigt!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="minimale Dauer eines Tones"
+        required
+        name="time1"
+        [(ngModel)]="playerData.time[0]"
+        type="number"
+        autocomplete="off"
+      />
+      <mat-error>
+        Die minimale Dauer eines Tons wird benötigt!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="maximale Dauer eines Tones"
+        required
+        name="time2"
+        [(ngModel)]="playerData.time[1]"
+        type="number"
+        autocomplete="off"
+      />
+      <mat-error>
+        Die maximale Dauer eines Tons wird benötigt!
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-icon-button
+      class="medium"
+      [disabled]="!form.valid"
+      type="submit"
+      (click)="playable ? start(form.value) : stop(); playable = playable ? false : true"
+    >
+      <mat-icon>{{ playable ? 'play_circle_outline' : 'pause' }}</mat-icon>
+    </button>
+
+    <button
+      type="button"
+      mat-icon-button
+      class="medium"
+      id="volume"
+      (click)="
+        mute = mute ? false : true;
+        mute ? (slider.value = '0') : (slider.value = '1');
+        mute ? speeker(0) : speeker(1)
+      "
+    >
+      <mat-icon>{{ mute ? 'volume_off' : 'volume_up' }}</mat-icon>
+    </button>
+    <mat-slider
+      min="0"
+      max="2"
+      step="0.01"
+      color="primary"
+      value="1"
+      #slider
+      (input)="slider.value === 0 ? (mute = true) : (mute = false); speeker(slider.value)"
+    ></mat-slider>
+  </form>
+</div>

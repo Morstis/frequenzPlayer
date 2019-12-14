@@ -1,14 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<div id="wrapper">
+  <app-player
+    *ngFor="let player of players; index as i"
+    (started)="getValues($event, i)"
+    [input]="{ freq: player.freq, time: player.time }"
+  ></app-player>
+  <div id="buttons">
+    <button mat-icon-button (click)="players.push({})">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button (click)="players.pop()">
+      <mat-icon>remove</mat-icon>
+    </button>
   </div>
-</ion-content>
+</div>
+<button
+  [disabled]="players.length !== saveable"
+  mat-icon-button
+  id="save"
+  class="medium"
+  (click)="save()"
+>
+  <mat-icon>save_alt</mat-icon>
+</button>
