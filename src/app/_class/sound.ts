@@ -24,7 +24,7 @@ export class Sound {
   resume(volume: number) {
     this.gainNode.gain.value = volume;
   }
-  loop(freqRange: number[], timeRange: number[]) {
+  loop(freqRange: number[], badFreqRange: number[], timeRange: number[]) {
     let i = 0;
     setInterval(() => {
       if (this.stopped) {
@@ -32,7 +32,7 @@ export class Sound {
       }
       const toneLenght = this.random(timeRange[0], timeRange[1]);
       this.time += toneLenght;
-      this.oscillator.frequency.setValueAtTime(this.random(freqRange[0], freqRange[1]), this.time);
+      this.oscillator.frequency.setValueAtTime(this.getFreq(freqRange, badFreqRange), this.time);
       i++;
     }, 1);
 
@@ -43,5 +43,13 @@ export class Sound {
   }
   private random(min, max) {
     return Math.random() * (max - min) + min;
+  }
+  private getFreq(freqRange: number[], badFreqRange: number[]) {
+    let possibleFreq = this.random(freqRange[0], freqRange[1]);
+    while (badFreqRange[0] < possibleFreq && badFreqRange[1] > possibleFreq) {
+      possibleFreq = this.random(freqRange[0], freqRange[1]);
+    }
+
+    return possibleFreq;
   }
 }

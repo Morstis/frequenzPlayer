@@ -1,0 +1,10 @@
+.settingContainer {
+  padding: 1rem;
+  margin: 0 15rem 0 15rem;
+}
+
+@media only screen and (max-width: 730px) {
+  .settingContainer {
+    margin: initial;
+  }
+}

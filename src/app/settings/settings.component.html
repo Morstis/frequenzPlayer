@@ -1,0 +1,6 @@
+<mat-card class="settingContainer">
+  <label>
+    <span class="noselect">Dunkles Design</span>
+    <mat-slide-toggle (change)="changeTheme($event)" [checked]="theme$ | async"></mat-slide-toggle>
+  </label>
+</mat-card>

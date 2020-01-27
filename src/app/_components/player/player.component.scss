@@ -1,13 +1,10 @@
 @import '../../../theme/theme.scss';
 .player {
-  height: 25rem;
   @include mat-elevation(4);
   border-radius: 0.3rem;
   padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  mat-form-field {
+  mat-form-field,
+  h4 {
     width: 100%;
   }
   form {
@@ -17,10 +14,6 @@
   }
 
   mat-slider {
-    flex-grow: 1;
-    margin-top: 0.5rem;
-  }
-  #volume {
-    margin-left: auto;
+    width: calc(100% - 8rem);
   }
 }

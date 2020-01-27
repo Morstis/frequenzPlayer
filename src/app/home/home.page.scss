@@ -4,12 +4,13 @@
   flex-wrap: wrap;
   app-player {
     width: 30rem;
+    margin: 0 1rem 1rem 1rem;
   }
 
   #buttons {
     display: flex;
     flex-direction: column;
-    margin-left: 3rem;
+    margin-left: 2rem;
     justify-content: space-evenly;
     button {
       transform: scale(2);
@@ -27,7 +28,7 @@
   bottom: 0;
   margin: 2rem;
   @include mat-elevation(2);
-  background-color: mat-color($mat-primary, main);
+  background-color: mat-color($mat-accent, main);
 }
 
 @media only screen and (max-width: 730px) {

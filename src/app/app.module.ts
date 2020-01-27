@@ -15,18 +15,29 @@ import {
   MatIconModule,
   MatSidenavModule,
   MatListModule,
-  MatIconRegistry,
   MatInputModule,
-  MatSliderModule
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatCardModule,
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerComponent } from './_components/player/player.component';
-import { HomePage } from './home/home.page';
-
+import { HomePage, AlertTemplateComponent } from './home/home.page';
+import { SettingsComponent } from './settings/settings.component';
+import { FindFreqComponent } from './_components/find-freq/find-freq.component';
 @NgModule({
-  declarations: [AppComponent, PlayerComponent, HomePage],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    PlayerComponent,
+    HomePage,
+    SettingsComponent,
+    FindFreqComponent,
+    AlertTemplateComponent
+  ],
+  entryComponents: [AlertTemplateComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -40,12 +51,17 @@ import { HomePage } from './home/home.page';
     MatInputModule,
     MatSliderModule,
     FormsModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatDialogModule,
     IonicModule.forRoot()
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [AppComponent]
 })

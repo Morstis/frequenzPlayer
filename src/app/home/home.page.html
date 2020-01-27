@@ -2,13 +2,13 @@
   <app-player
     *ngFor="let player of players; index as i"
     (started)="getValues($event, i)"
-    [input]="{ freq: player.freq, time: player.time }"
+    [input]="player"
   ></app-player>
   <div id="buttons">
-    <button mat-icon-button (click)="players.push({})">
+    <button mat-icon-button (click)="Push({})">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button (click)="players.pop()">
+    <button mat-icon-button (click)="Pop()">
       <mat-icon>remove</mat-icon>
     </button>
   </div>
